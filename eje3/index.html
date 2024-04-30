@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <div id="resultado"></div>
+
+    <script>
+        var lista = ['a', 'b', 'c', '1', 'x', '9', 'd', '4'];
+        var item;
+        var resultado = "";
+
+        for (item in lista) {
+            if (lista[item] !== "1" && lista[item] !== "9" && isNaN(lista[item])) {
+                resultado += lista[item] + "<br>";
+            }
+        }
+
+        document.getElementById("resultado").innerHTML = resultado;
+    </script>
+</body>
+</html>
