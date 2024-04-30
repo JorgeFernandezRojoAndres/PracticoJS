@@ -25,15 +25,22 @@
             }
         }
 
-        // Función para obtener la edad del usuario
+        // Función para obtener la edad del usuario y calcular los días vividos
         function obtenerEdad(nombre) {
             // Solicitar al usuario su edad
             var edad = prompt("Hola, " + nombre + ". Por favor, introduce tu edad:");
 
             // Verificar si se proporcionó una edad
             if (edad !== null && edad !== "") {
-                // Mostrar un mensaje con la edad proporcionada
-                alert("Gracias por proporcionar tu edad, " + nombre + ". Tienes " + edad + " años.");
+                // Calcular los días vividos
+                var fechaNacimiento = new Date();
+                fechaNacimiento.setFullYear(fechaNacimiento.getFullYear() - parseInt(edad));
+                var fechaActual = new Date();
+                var diferenciaTiempo = fechaActual.getTime() - fechaNacimiento.getTime();
+                var diasVividos = Math.floor(diferenciaTiempo / (1000 * 3600 * 24));
+
+                // Mostrar un mensaje con la edad y los días vividos
+                alert("Gracias por proporcionar tu edad, " + nombre + ". Tienes " + edad + " años. Has vivido aproximadamente " + diasVividos + " días.");
             } else {
                 // Mostrar un mensaje en caso de que no se haya proporcionado una edad
                 alert("¡Debes proporcionar tu edad!");
