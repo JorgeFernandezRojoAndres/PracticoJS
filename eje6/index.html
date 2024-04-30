@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Cadena de Texto</title>
+</head>
+<body>
+    <h2>Análisis de Cadena de Texto</h2>
+    <button onclick="analizarTexto()">Analizar Texto</button>
+    <div id="resultado"></div>
+
+    <script>
+        function analizarTexto() {
+            // Pedir al usuario que ingrese una cadena de texto
+            var texto = prompt("Por favor, introduce una cadena de texto:");
+
+            // Verificar si se proporcionó un texto
+            if (texto !== null && texto !== "") {
+                // Dividir la cadena en palabras utilizando split()
+                var palabras = texto.split(" ");
+
+                // Número de palabras
+                var numPalabras = palabras.length;
+
+                // Primera palabra
+                var primeraPalabra = palabras[0];
+
+                // Última palabra
+                var ultimaPalabra = palabras[palabras.length - 1];
+
+                // Palabras colocadas en orden inverso
+                var palabrasInverso = palabras.slice().reverse().join(" ");
+
+                // Palabras ordenadas de la "a" hasta la "z"
+                var palabrasOrdenadasAZ = palabras.slice().sort().join(" ");
+
+                // Palabras ordenadas de la "z" hasta la "a"
+                var palabrasOrdenadasZA = palabras.slice().sort().reverse().join(" ");
+
+                // Mostrar la información en el elemento HTML con id "resultado"
+                var resultado = "Número de palabras: " + numPalabras + "<br>" +
+                                "Primera palabra: " + primeraPalabra + "<br>" +
+                                "Última palabra: " + ultimaPalabra + "<br>" +
+                                "Palabras en orden inverso: " + palabrasInverso + "<br>" +
+                                "Palabras ordenadas de la 'a' hasta la 'z': " + palabrasOrdenadasAZ + "<br>" +
+                                "Palabras ordenadas de la 'z' hasta la 'a': " + palabrasOrdenadasZA;
+                document.getElementById("resultado").innerHTML = resultado;
+            } else {
+                // Mostrar un mensaje si no se proporciona un texto
+                document.getElementById("resultado").innerHTML = "Debes proporcionar una cadena de texto.";
+            }
+        }
+    </script>
+</body>
+</html>
