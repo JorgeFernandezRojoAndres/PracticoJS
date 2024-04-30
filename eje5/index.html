@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza</title>
+</head>
+<body>
+    <script>
+        // Generar un número aleatorio entre 1 y 1 millón
+        var numeroAleatorio = Math.floor(Math.random() * 1000000) + 1;
+        var intentos = 0;
+
+        // Función para jugar al juego de adivinanza
+        function jugar() {
+            // Solicitar al usuario que adivine el número
+            var intento = parseInt(prompt("Intenta adivinar el número (entre 1 y 1 millón):"));
+
+            // Verificar si el intento es válido y no es nulo
+            if (!isNaN(intento) && intento !== null) {
+                intentos++; // Incrementar el contador de intentos
+
+                // Comparar el intento con el número aleatorio
+                if (intento === numeroAleatorio) {
+                    // Mostrar mensaje de felicitación y número de intentos
+                    alert("¡Felicidades! Has adivinado el número en " + intentos + " intentos.");
+                } else if (intento < numeroAleatorio) {
+                    // Mostrar mensaje de que el número es mayor
+                    alert("El número es mayor. Intenta de nuevo.");
+                    jugar(); // Volver a llamar a la función jugar para un nuevo intento
+                } else {
+                    // Mostrar mensaje de que el número es menor
+                    alert("El número es menor. Intenta de nuevo.");
+                    jugar(); // Volver a llamar a la función jugar para un nuevo intento
+                }
+            } else {
+                // Mostrar mensaje de error si el intento no es válido
+                alert("Por favor, introduce un número válido.");
+                jugar(); // Volver a llamar a la función jugar para un nuevo intento
+            }
+        }
+
+        // Iniciar el juego al cargar la página
+        window.onload = jugar;
+    </script>
+</body>
+</html>
