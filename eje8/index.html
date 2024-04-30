@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Estadístico</title>
+</head>
+<body>
+    <h2>Cargar Números y Obtener Resumen Estadístico</h2>
+    <button onclick="cargarNumeros()">Cargar Números</button>
+    <div id="resultado"></div>
+
+    <script>
+        function cargarNumeros() {
+            var numeros = [];
+            var num;
+            var sum = 0;
+            var min = Infinity;
+            var max = -Infinity;
+
+            // Solicitar al usuario que ingrese números
+            do {
+                num = prompt("Por favor, introduce un número (o cancela para finalizar):");
+                if (num !== null && num !== "") {
+                    num = parseFloat(num);
+                    if (!isNaN(num)) {
+                        numeros.push(num);
+                        sum += num;
+                        if (num < min) {
+                            min = num;
+                        }
+                        if (num > max) {
+                            max = num;
+                        }
+                    } else {
+                        alert("¡Debes introducir un número válido!");
+                    }
+                }
+            } while (num !== null);
+
+            // Verificar si se ingresaron números
+            if (numeros.length > 0) {
+                // Calcular el promedio
+                var promedio = sum / numeros.length;
+
+                // Ordenar el array de números
+                numeros.sort(function(a, b) {
+                    return a - b;
+                });
+
+                // Calcular la mediana
+                var mediana;
+                var mid = Math.floor(numeros.length / 2);
+                if (numeros.length % 2 === 0) {
+                    mediana = (numeros[mid - 1] + numeros[mid]) / 2;
+                } else {
+                    mediana = numeros[mid];
+                }
+
+                // Calcular la desviación estándar
+                var sumSquaredDiff = 0;
+                for (var i = 0; i < numeros.length; i++) {
+                    sumSquaredDiff += Math.pow(numeros[i] - promedio, 2);
+                }
+                var desviacionEstandar = Math.sqrt(sumSquaredDiff / numeros.length);
+
+                // Mostrar el resumen estadístico en el elemento HTML con id "resultado"
+                var resultado = "Promedio: " + promedio.toFixed(2) + "<br>" +
+                                "Mediana: " + mediana + "<br>" +
+                                "Mínimo: " + min + "<br>" +
+                                "Máximo: " + max + "<br>" +
+                                "Desviación Estándar: " + desviacionEstandar.toFixed(2);
+                document.getElementById("resultado").innerHTML = resultado;
+            } else {
+                // Mostrar un mensaje si no se ingresaron números
+                document.getElementById("resultado").innerHTML = "No se ingresaron números.";
+            }
+        }
+    </script>
+</body>
+</html>
