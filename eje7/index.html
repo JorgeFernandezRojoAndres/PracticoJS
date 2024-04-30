@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases al Azar</title>
+</head>
+<body>
+    <h1>Frase al Azar</h1>
+    <p id="frase"></p>
+
+    <script src="Frases.js"></script>
+    <script>
+        // Obtener el elemento donde se mostrará la frase
+        var fraseElement = document.getElementById("frase");
+
+        // Obtener una frase al azar y mostrarla
+        var fraseAleatoria = obtenerFraseAleatoria();
+        fraseElement.textContent = fraseAleatoria;
+    </script>
+</body>
+</html>
