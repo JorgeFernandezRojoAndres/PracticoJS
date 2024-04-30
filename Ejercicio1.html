@@ -16,9 +16,27 @@
             if (nombre !== null && nombre !== "") {
                 // Mostrar un saludo con el nombre proporcionado
                 alert("Hola, " + nombre + "! Bienvenido.");
+
+                // Llamar a la función obtenerEdad para solicitar la edad después de obtener el nombre
+                obtenerEdad(nombre);
             } else {
                 // Mostrar un mensaje en caso de que no se haya proporcionado un nombre
                 alert("¡Debes proporcionar un nombre!");
+            }
+        }
+
+        // Función para obtener la edad del usuario
+        function obtenerEdad(nombre) {
+            // Solicitar al usuario su edad
+            var edad = prompt("Hola, " + nombre + ". Por favor, introduce tu edad:");
+
+            // Verificar si se proporcionó una edad
+            if (edad !== null && edad !== "") {
+                // Mostrar un mensaje con la edad proporcionada
+                alert("Gracias por proporcionar tu edad, " + nombre + ". Tienes " + edad + " años.");
+            } else {
+                // Mostrar un mensaje en caso de que no se haya proporcionado una edad
+                alert("¡Debes proporcionar tu edad!");
             }
         }
 
