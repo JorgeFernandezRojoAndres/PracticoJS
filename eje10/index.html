@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Días</title>
+</head>
+<body>
+    <h2>Calculadora de Días</h2>
+    <label for="fechaInput">Ingresa una fecha (DD-MM-YYYY):</label>
+    <input type="text" id="fechaInput" placeholder="DD-MM-YYYY">
+    <button onclick="calcularDias()">Calcular Días</button>
+    <div id="resultado"></div>
+
+    <script>
+        function calcularDias() {
+            var fechaInput = document.getElementById("fechaInput").value;
+            var fechaIngresada = new Date(fechaInput.replace(/-/g, '/'));
+
+            if (isNaN(fechaIngresada.getTime())) {
+                alert("Por favor, ingresa una fecha válida en el formato DD-MM-YYYY.");
+                return;
+            }
+
+            var hoy = new Date();
+            hoy.setHours(0, 0, 0, 0);
+
+            var diferencia = Math.abs(fechaIngresada.getTime() - hoy.getTime());
+            var diasFaltantes = Math.ceil(diferencia / (1000 * 3600 * 24));
+
+            var resultado;
+            if (fechaIngresada < hoy) {
+                resultado = "Han pasado " + diasFaltantes + " días desde la fecha ingresada.";
+            } else if (fechaIngresada > hoy) {
+                resultado = "Faltan " + diasFaltantes + " días para la fecha ingresada.";
+            } else {
+                resultado = "Hoy es la fecha ingresada.";
+            }
+
+            document.getElementById("resultado").innerText = resultado;
+        }
+    </script>
+</body>
+</html>
