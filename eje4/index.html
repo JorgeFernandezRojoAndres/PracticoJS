@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Números Aleatorios</title>
+</head>
+<body>
+    <h2>Generador de 50 números aleatorios entre 1 y 6:</h2>
+    <button onclick="generarNumeros()">Generar Números</button>
+    <div id="resultado"></div>
+
+    <script>
+        // Función para generar 50 números aleatorios entre 1 y 6
+        function generarNumeros() {
+            var numeros = "";
+
+            // Generar 50 números aleatorios
+            for (var i = 0; i < 50; i++) {
+                var numeroAleatorio = Math.floor(Math.random() * 6) + 1;
+                numeros += numeroAleatorio + ", ";
+            }
+
+            // Mostrar los números generados en el elemento HTML con id "resultado"
+            document.getElementById("resultado").innerHTML = numeros;
+        }
+    </script>
+</body>
+</html>
