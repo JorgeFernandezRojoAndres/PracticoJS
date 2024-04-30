@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+        // Función para obtener el nombre del usuario y mostrar un saludo
+        function obtenerNombre() {
+            // Solicitar al usuario su nombre
+            var nombre = prompt("Por favor, introduce tu nombre:");
+
+            // Verificar si se proporcionó un nombre
+            if (nombre !== null && nombre !== "") {
+                // Mostrar un saludo con el nombre proporcionado
+                alert("Hola, " + nombre + "! Bienvenido.");
+            } else {
+                // Mostrar un mensaje en caso de que no se haya proporcionado un nombre
+                alert("¡Debes proporcionar un nombre!");
+            }
+        }
+
+        // Llamar a la función obtenerNombre cuando se cargue la página
+        window.onload = obtenerNombre;
+    </script>
+</body>
+</html>
