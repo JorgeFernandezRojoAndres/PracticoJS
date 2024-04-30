@@ -15,7 +15,8 @@
     <script>
         function calcularDias() {
             var fechaInput = document.getElementById("fechaInput").value;
-            var fechaIngresada = new Date(fechaInput.replace(/-/g, '/'));
+            // Convertir el formato de la fecha ingresada a YYYY/MM/DD
+            var fechaIngresada = new Date(fechaInput.split('-').reverse().join('/'));
 
             if (isNaN(fechaIngresada.getTime())) {
                 alert("Por favor, ingresa una fecha válida en el formato DD-MM-YYYY.");
