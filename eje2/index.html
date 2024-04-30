@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujar Rectángulo de Asteriscos</title>
+</head>
+<body>
+    <h2>Ingrese la base y la altura del rectángulo:</h2>
+    <form id="rectanguloForm">
+        <label for="base">Base:</label>
+        <input type="number" id="base" name="base" min="1" required>
+        <br>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" name="altura" min="1" required>
+        <br>
+        <button type="submit">Dibujar Rectángulo</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById("rectanguloForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe
+
+            // Obtener los valores de base y altura del formulario
+            var base = parseInt(document.getElementById("base").value);
+            var altura = parseInt(document.getElementById("altura").value);
+
+            // Llamar a la función para dibujar el rectángulo
+            dibujarRectangulo(base, altura);
+        });
+
+        // Función para dibujar el rectángulo de asteriscos
+        function dibujarRectangulo(base, altura) {
+            var resultado = "";
+
+            // Iterar sobre las filas (altura)
+            for (var i = 0; i < altura; i++) {
+                // Iterar sobre las columnas (base)
+                for (var j = 0; j < base; j++) {
+                    resultado += "* ";
+                }
+                resultado += "<br>"; // Agregar un salto de línea después de cada fila
+            }
+
+            // Mostrar el resultado en el elemento HTML con id "resultado"
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
